@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HyperData.HeartAttackPage"
+             Title="HeartAttackPage">
+    <VerticalStackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+
+        <Label 
+            Text="Heart Attack Checker"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Entry 
+            Placeholder="smth"
+            x:Name="FirstEtr"
+            Completed="FirstEtr_Completed"/>
+
+        <CheckBox
+            x:Name="ChestPainBox"
+            CheckedChanged="ChestPainBox_CheckedChanged"/>
+
+        <Button
+            x:Name="SubmitBtn"
+            Text="Submit"
+            Clicked="SubmitBtn_Clicked"/>
+
+        <Label
+            x:Name="PredictionLbl"
+            Text=""/>
+        
+    </VerticalStackLayout>
+</ContentPage>
