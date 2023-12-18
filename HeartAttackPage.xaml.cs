@@ -1,5 +1,4 @@
-using HyperData.DataTemplates;
-using Microsoft.ML;
+using System.Diagnostics;
 
 namespace HyperData;
 
@@ -10,51 +9,42 @@ public partial class HeartAttackPage : ContentPage
         InitializeComponent();
     }
 
-    private void FirstEtr_Completed(object sender, EventArgs e)
+    private void Submit(object sender, EventArgs e)
     {
-        SubmitBtn_Clicked(null, null);
-    }
+        string age = AgeEntry.Text;
+        string sex = SexEntry.Text;
+        string chestPainType = ChestPainTypeEntry.Text;
+        string restingBP = RestingBPEntry.Text;
+        string cholesterol = CholesterolEntry.Text;
+        string fastingBS = FastingBSEntry.Text;
+        string restingECG = RestingECGEntry.Text;
+        string maxHR = MaxHREntry.Text;
+        string exerciseAngina = ExerciseAnginaEntry.Text;
+        string oldpeak = OldpeakEntry.Text;
+        string stSlope = STSlopeEntry.Text;
 
-    private void ChestPainBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-        SubmitBtn_Clicked(null, null);
-    }
-
-    private void SubmitBtn_Clicked(object sender, EventArgs e)
-    {
-        HealthData healthData;
-        try
+        ProcessStartInfo startInfo = new()
         {
-            healthData = new(ChestPainBox.IsChecked);
-        }
-        catch (ArgumentNullException)
-        {
-            PredictionLbl.Text = "One or more boxes is empty.";
-            return;
-        }
-        catch (ArgumentException ex)
-        {
-            PredictionLbl.Text = ex.Message;
-            return;
-        }
+            FileName = "python",
+            RedirectStandardInput = true,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            Arguments = $"model.py {age} {sex} {chestPainType} {restingBP} {cholesterol} {fastingBS} {restingECG} {maxHR} {exerciseAngina} {oldpeak} {stSlope}"
+        };
 
-        MLContext context = new();
+        // Create and start the process
+        using Process process = new() { StartInfo = startInfo };
 
-        ITransformer model;
-        try
-        {
-            model = context.Model.Load(File.Open("", FileMode.Open), out _);
-        }
-        catch (Exception ex)
-        {
-            PredictionLbl.Text = ex.Message;
-            return;
-        }
+        process.Start();
 
-        var predictionEngine = context.Model.CreatePredictionEngine<HealthData, OutData>(model);
+        string output = process.StandardOutput.ReadToEnd();
+        string error = process.StandardError.ReadToEnd();
 
-        var prediction = predictionEngine.Predict(healthData);
+        // Wait for the process to exit
+        process.WaitForExit();
 
-        PredictionLbl.Text = prediction.Moron.ToString();
+        PredictionLbl.Text = output == "0" ? "No Heart disease predicted" : output == "1" ? "There is a probability of heart disease" : error;
     }
 }

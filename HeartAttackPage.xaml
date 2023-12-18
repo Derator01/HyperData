@@ -3,32 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HyperData.HeartAttackPage"
              Title="HeartAttackPage">
-    <VerticalStackLayout
-        HorizontalOptions="Center"
-        VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            x:Name="MainLayout">
 
-        <Label 
-            Text="Heart Attack Checker"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            <Label Text="Patient Information" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
 
-        <Entry 
-            Placeholder="smth"
-            x:Name="FirstEtr"
-            Completed="FirstEtr_Completed"/>
+            <Label Text="Age:" />
+            <Entry x:Name="AgeEntry" Placeholder="years" />
 
-        <CheckBox
-            x:Name="ChestPainBox"
-            CheckedChanged="ChestPainBox_CheckedChanged"/>
+            <Label Text="Sex (M/F):" />
+            <Entry x:Name="SexEntry" Placeholder="Enter sex" />
 
-        <Button
-            x:Name="SubmitBtn"
-            Text="Submit"
-            Clicked="SubmitBtn_Clicked"/>
+            <Label Text="Chest Pain Type:" />
+            <Entry x:Name="ChestPainTypeEntry" Placeholder="Enter chest pain type" />
 
-        <Label
-            x:Name="PredictionLbl"
-            Text=""/>
-        
-    </VerticalStackLayout>
+            <Label Text="Resting Blood Pressure (mm Hg):" />
+            <Entry x:Name="RestingBPEntry" Placeholder="Enter resting blood pressure" />
+
+            <Label Text="Serum Cholesterol (mm/dl):" />
+            <Entry x:Name="CholesterolEntry" Placeholder="Enter serum cholesterol" />
+
+            <Label Text="Fasting Blood Sugar (0/1):" />
+            <Entry x:Name="FastingBSEntry" Placeholder="Enter fasting blood sugar" />
+
+            <Label Text="Resting ECG Results:" />
+            <Entry x:Name="RestingECGEntry" Placeholder="Enter resting ECG results" />
+
+            <Label Text="Maximum Heart Rate (60-202):" />
+            <Entry x:Name="MaxHREntry" Placeholder="Enter maximum heart rate" />
+
+            <Label Text="Exercise-Induced Angina (Y/N):" />
+            <Entry x:Name="ExerciseAnginaEntry" Placeholder="Enter exercise-induced angina" />
+
+            <Label Text="Oldpeak (Numeric value):" />
+            <Entry x:Name="OldpeakEntry" Placeholder="Enter oldpeak value" />
+
+            <Label Text="ST Slope (Up/Flat/Down):" />
+            <Entry x:Name="STSlopeEntry" Placeholder="Enter ST slope" />
+
+            <Button Text="Submit" Clicked="OnSubmitClicked" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
+
+            <Label 
+                x:Name="PredictionLbl" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
