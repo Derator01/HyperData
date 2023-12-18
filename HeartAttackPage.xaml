@@ -12,37 +12,37 @@
             <Label Text="Patient Information" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
 
             <Label Text="Age:" />
-            <Entry x:Name="AgeEntry" Placeholder="years" />
+            <Entry x:Name="AgeEntry" Placeholder="years" MinimumWidthRequest="600" />
 
             <Label Text="Sex:" />
-            <Entry x:Name="SexEntry" Placeholder="(M/F)" />
+            <Entry x:Name="SexEntry" Placeholder="(M/F)" MinimumWidthRequest="600" />
 
             <Label Text="Chest Pain Type:" />
-            <Entry x:Name="ChestPainTypeEntry" Placeholder="(TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic)" />
+            <Entry x:Name="ChestPainTypeEntry" Placeholder="(TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic)" MinimumWidthRequest="600" />
 
             <Label Text="Resting Blood Pressure:" />
-            <Entry x:Name="RestingBPEntry" Placeholder="(mm Hg)" />
+            <Entry x:Name="RestingBPEntry" Placeholder="(mm Hg)" MinimumWidthRequest="600" />
 
             <Label Text="Serum Cholesterol:" />
-            <Entry x:Name="CholesterolEntry" Placeholder="(mm/dl)" />
+            <Entry x:Name="CholesterolEntry" Placeholder="(mm/dl)" MinimumWidthRequest="600" />
 
             <Label Text="Fasting Blood Sugar:" />
-            <Entry x:Name="FastingBSEntry" Placeholder="(mm/dl)" />
+            <Entry x:Name="FastingBSEntry" Placeholder="(mm/dl)" MinimumWidthRequest="600" />
 
             <Label Text="Resting ECG Results:" />
-            <Entry x:Name="RestingECGEntry" Placeholder="(Normal: Normal, ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria)" />
+            <Entry x:Name="RestingECGEntry" Placeholder="(Normal: Normal, ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria)" MinimumWidthRequest="600" />
 
             <Label Text="Maximum Heart Rate:" />
-            <Entry x:Name="MaxHREntry" Placeholder="(60-202)" />
+            <Entry x:Name="MaxHREntry" Placeholder="(60-202)" MinimumWidthRequest="600" />
 
             <Label Text="Exercise-Induced Angina:" />
-            <Entry x:Name="ExerciseAnginaEntry" Placeholder="(Y/N)" />
+            <Entry x:Name="ExerciseAnginaEntry" Placeholder="(Y/N)" MinimumWidthRequest="600" />
 
             <Label Text="Oldpeak:" />
-            <Entry x:Name="OldpeakEntry" Placeholder="(Numeric value)" />
+            <Entry x:Name="OldpeakEntry" Placeholder="(Numeric value)" MinimumWidthRequest="600" />
 
             <Label Text="ST Slope:" />
-            <Entry x:Name="STSlopeEntry" Placeholder="(Up/Flat/Down)" />
+            <Entry x:Name="STSlopeEntry" Placeholder="(Up/Flat/Down)" MinimumWidthRequest="600" />
 
             <Button Text="Submit" Clicked="Submit" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
 
