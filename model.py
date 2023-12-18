@@ -2,7 +2,7 @@ import sys
 import joblib
 import pandas as pd
 
-args = sys.argv#[1:]
+args = sys.argv
 
 loaded_model = joblib.load(r"[pathToModel.pkl]")
 
@@ -25,11 +25,6 @@ for col, val in args.items():
         dummy_col = f"{col}_{val}"
         df[dummy_col] = 1
 df = df.drop(list(unique_values.keys()), axis=1)
-
-if "sex_True" in df.columns:
-    df = df.drop(columns='sex_True', axis=1)
-else:
-    df = df.drop(columns='sex_False', axis=1)
 
 # print(df.columns)
 

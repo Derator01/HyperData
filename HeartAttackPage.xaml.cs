@@ -12,7 +12,7 @@ public partial class HeartAttackPage : ContentPage
     private void Submit(object sender, EventArgs e)
     {
         string age = AgeEntry.Text;
-        string sex = SexEntry.Text.ToUpper();
+        string sex = SexEntry.Text;
         string chestPainType = ChestPainTypeEntry.Text;
         string restingBP = RestingBPEntry.Text;
         string cholesterol = CholesterolEntry.Text;
@@ -93,6 +93,8 @@ public partial class HeartAttackPage : ContentPage
             return;
         }
 
+        //Using the model.
+
         ProcessStartInfo startInfo = new()
         {
             FileName = "python",
@@ -101,7 +103,7 @@ public partial class HeartAttackPage : ContentPage
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            Arguments = $"[pathToFile.py] {age} {sex == "M"} {chestPainType} {restingBP} {cholesterol} {fastingBS} {restingECG} {maxHR} {exerciseAngina} {oldpeak} {stSlope}"
+            Arguments = $"[pathToFile.py] {age} {sex} {chestPainType} {restingBP} {cholesterol} {fastingBS} {restingECG} {maxHR} {exerciseAngina} {oldpeak} {stSlope}"
         };
 
         // Create and start the process
@@ -115,6 +117,11 @@ public partial class HeartAttackPage : ContentPage
         // Wait for the process to exit
         process.WaitForExit();
 
-        PredictionLbl.Text = output.Trim() == "[0]" ? "No Heart disease predicted" : output.Trim() == "[1]" ? "There is a probability of heart disease" : error;
+        PredictionLbl.Text = output.Trim() switch
+        {
+            "[0]" => "No Heart disease predicted",
+            "[1]" => "There is a probability of heart disease",
+            _ => error
+        };
     }
 }
