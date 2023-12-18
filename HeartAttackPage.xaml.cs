@@ -12,11 +12,19 @@ public partial class HeartAttackPage : ContentPage
     private void Submit(object sender, EventArgs e)
     {
         string age = AgeEntry.Text;
-        string sex = SexEntry.Text;
+        string sex = SexEntry.Text.ToUpper();
         string chestPainType = ChestPainTypeEntry.Text;
         string restingBP = RestingBPEntry.Text;
         string cholesterol = CholesterolEntry.Text;
-        string fastingBS = int.Parse(FastingBSEntry.Text) > 120 ? "1" : "0";
+
+        string fastingBS;
+        if (!float.TryParse(FastingBSEntry.Text, out float fastingBSValue))
+        {
+            DisplayAlert("Error", "Please enter a valid fasting blood sugar.", "OK");
+            return;
+        }
+        fastingBS = fastingBSValue > 120 ? "1" : "0";
+
         string restingECG = RestingECGEntry.Text;
         string maxHR = MaxHREntry.Text;
         string exerciseAngina = ExerciseAnginaEntry.Text;
@@ -45,24 +53,17 @@ public partial class HeartAttackPage : ContentPage
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(restingBP) || !float.TryParse(restingBP, out float restingBPValue))
+        if (string.IsNullOrWhiteSpace(restingBP) || !float.TryParse(restingBP, out _))
         {
             // Handle the case where restingBP is not reasonable
             DisplayAlert("Error", "Please enter a valid resting blood pressure.", "OK");
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(cholesterol) || !float.TryParse(cholesterol, out float cholesterolValue))
+        if (string.IsNullOrWhiteSpace(cholesterol) || !float.TryParse(cholesterol, out _))
         {
             // Handle the case where cholesterol is not reasonable
             DisplayAlert("Error", "Please enter a valid serum cholesterol.", "OK");
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(fastingBS) || (fastingBS != "0" && fastingBS != "1"))
-        {
-            // Handle the case where fastingBS is not reasonable
-            DisplayAlert("Error", "Please enter a valid fasting blood sugar (0 or 1).", "OK");
             return;
         }
 
@@ -87,7 +88,7 @@ public partial class HeartAttackPage : ContentPage
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(oldpeak) || !double.TryParse(oldpeak, out double oldpeakValue))
+        if (string.IsNullOrWhiteSpace(oldpeak) || !double.TryParse(oldpeak, out _))
         {
             // Handle the case where oldpeak is not reasonable
             DisplayAlert("Error", "Please enter a valid oldpeak value.", "OK");
@@ -110,7 +111,7 @@ public partial class HeartAttackPage : ContentPage
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            Arguments = $"model.py {age} {sex} {chestPainType} {restingBP} {cholesterol} {fastingBS} {restingECG} {maxHR} {exerciseAngina} {oldpeak} {stSlope}"
+            Arguments = $"C:\\Users\\SUPER-LAPTOP\\source\\repos\\Other\\Other\\HyperData\\bin\\Debug\\net7.0-windows10.0.19041.0\\win10-x64\\model.py {age} {sex == "M"} {chestPainType} {restingBP} {cholesterol} {fastingBS} {restingECG} {maxHR} {exerciseAngina} {oldpeak} {stSlope}"
         };
 
         // Create and start the process
@@ -124,6 +125,6 @@ public partial class HeartAttackPage : ContentPage
         // Wait for the process to exit
         process.WaitForExit();
 
-        PredictionLbl.Text = output == "0" ? "No Heart disease predicted" : output == "1" ? "There is a probability of heart disease" : error;
+        PredictionLbl.Text = output.Trim() == "[0]" ? "No Heart disease predicted" : output.Trim() == "[1]" ? "There is a probability of heart disease" : error;
     }
 }

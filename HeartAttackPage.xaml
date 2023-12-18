@@ -44,7 +44,7 @@
             <Label Text="ST Slope:" />
             <Entry x:Name="STSlopeEntry" Placeholder="(Up/Flat/Down)" />
 
-            <Button Text="Submit" Clicked="OnSubmitClicked" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
+            <Button Text="Submit" Clicked="Submit" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
 
             <Label 
                 x:Name="PredictionLbl" />
