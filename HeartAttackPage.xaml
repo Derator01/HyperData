@@ -14,35 +14,35 @@
             <Label Text="Age:" />
             <Entry x:Name="AgeEntry" Placeholder="years" />
 
-            <Label Text="Sex (M/F):" />
-            <Entry x:Name="SexEntry" Placeholder="Enter sex" />
+            <Label Text="Sex:" />
+            <Entry x:Name="SexEntry" Placeholder="(M/F)" />
 
             <Label Text="Chest Pain Type:" />
-            <Entry x:Name="ChestPainTypeEntry" Placeholder="Enter chest pain type" />
+            <Entry x:Name="ChestPainTypeEntry" Placeholder="(TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic)" />
 
-            <Label Text="Resting Blood Pressure (mm Hg):" />
-            <Entry x:Name="RestingBPEntry" Placeholder="Enter resting blood pressure" />
+            <Label Text="Resting Blood Pressure:" />
+            <Entry x:Name="RestingBPEntry" Placeholder="(mm Hg)" />
 
-            <Label Text="Serum Cholesterol (mm/dl):" />
-            <Entry x:Name="CholesterolEntry" Placeholder="Enter serum cholesterol" />
+            <Label Text="Serum Cholesterol:" />
+            <Entry x:Name="CholesterolEntry" Placeholder="(mm/dl)" />
 
-            <Label Text="Fasting Blood Sugar (0/1):" />
-            <Entry x:Name="FastingBSEntry" Placeholder="Enter fasting blood sugar" />
+            <Label Text="Fasting Blood Sugar:" />
+            <Entry x:Name="FastingBSEntry" Placeholder="(mm/dl)" />
 
             <Label Text="Resting ECG Results:" />
-            <Entry x:Name="RestingECGEntry" Placeholder="Enter resting ECG results" />
+            <Entry x:Name="RestingECGEntry" Placeholder="(Normal: Normal, ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria)" />
 
-            <Label Text="Maximum Heart Rate (60-202):" />
-            <Entry x:Name="MaxHREntry" Placeholder="Enter maximum heart rate" />
+            <Label Text="Maximum Heart Rate:" />
+            <Entry x:Name="MaxHREntry" Placeholder="(60-202)" />
 
-            <Label Text="Exercise-Induced Angina (Y/N):" />
-            <Entry x:Name="ExerciseAnginaEntry" Placeholder="Enter exercise-induced angina" />
+            <Label Text="Exercise-Induced Angina:" />
+            <Entry x:Name="ExerciseAnginaEntry" Placeholder="(Y/N)" />
 
-            <Label Text="Oldpeak (Numeric value):" />
-            <Entry x:Name="OldpeakEntry" Placeholder="Enter oldpeak value" />
+            <Label Text="Oldpeak:" />
+            <Entry x:Name="OldpeakEntry" Placeholder="(Numeric value)" />
 
-            <Label Text="ST Slope (Up/Flat/Down):" />
-            <Entry x:Name="STSlopeEntry" Placeholder="Enter ST slope" />
+            <Label Text="ST Slope:" />
+            <Entry x:Name="STSlopeEntry" Placeholder="(Up/Flat/Down)" />
 
             <Button Text="Submit" Clicked="OnSubmitClicked" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0" />
 
